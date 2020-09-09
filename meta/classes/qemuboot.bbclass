@@ -73,7 +73,7 @@
 # IMAGE_CLASSES += "qemuboot"
 # See "runqemu help" for more info
 
-QB_MEM ?= "-m 256"
+QB_MEM ?= '${@bb.utils.contains("DISTRO_FEATURES", "opengl", "-m 512", "-m 256", d)}'
 QB_SERIAL_OPT ?= "-serial mon:stdio -serial null"
 QB_DEFAULT_KERNEL ?= "${KERNEL_IMAGETYPE}"
 QB_DEFAULT_FSTYPE ?= "ext4"
